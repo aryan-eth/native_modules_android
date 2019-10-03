@@ -6,6 +6,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
 
 public class DatabaseModule extends ReactContextBaseJavaModule {
 
@@ -43,5 +44,17 @@ public class DatabaseModule extends ReactContextBaseJavaModule {
 //            String exten = "jpg" // from ExtFiles value
 //            db.addContact(new Contact(audit, answer, finding, media, exten));
 //        }
+    }
+
+    // this method takes in a readable map and a string and maps the different
+    // strings from the readable map - using map.getString - similar to intents and bundles
+    @ReactMethod
+    public void insert(ReadableMap readableMap, String file) {
+        String auditScheduleDetailID = readableMap.getString("AuditScheduleDetailID");
+        String auditAnswerId = readableMap.getString("AuditAnswerId");
+        String localFindingID = readableMap.getString("LocalFindingID");
+        String localMediaID = readableMap.getString("LocalMediaID");
+        String extFiles = readableMap.getString("ExtFiles");
+        //your logic
     }
 }

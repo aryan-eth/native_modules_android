@@ -33,3 +33,11 @@
 * Package just adds the module and then mainApplication adds the package finally
 * Trying something with ArcGIS - the code has to go in ArcGIS module - then package gets it and then finally the mainApplication
 * There is kotlin support - https://proandroiddev.com/react-native-bridge-with-kotlin-b2afde2f70b
+
+## Native Modules - UI - Android
+* The big questions is, how do we make UIs in android and connect to react native?
+* One way is to have an android app and connect it to react native which makes it easier
+* We need a manager class which extends SimpleViewManager<View> 
+* Implementing the methods, you'll get a method - createViewInstance(@NonNull ThemedReactContext reactContext)
+* We make 2 global variables for the react context and view, and set them to reactContext and new View(reactContext) respectively
+* We can do stuff with the 'view' here - ```view.setBackgroundColor(Color.blue)``` or something
