@@ -6,8 +6,12 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.WritableMap;
 
@@ -61,6 +65,7 @@ public class MapsView extends Button {
 
     // adds a button to the screen
     // dynamic addition to the UI screen android
+    @ReactMethod
     private void addButton(){
         Button new_button = new Button(getContext());
         // we can only add in a layout or something
@@ -71,5 +76,16 @@ public class MapsView extends Button {
         // LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         // ll.addView(myButton, lp);
 
+    }
+
+    @ReactMethod
+    private void Layout(){
+        LinearLayout layout = new LinearLayout(getContext());
+        layout.addView(new TextView(getContext()));
+    }
+
+    @ReactMethod
+    private void toastShow(String message){
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
     }
 }

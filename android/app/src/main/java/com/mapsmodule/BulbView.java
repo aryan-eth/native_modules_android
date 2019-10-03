@@ -47,6 +47,7 @@ public class BulbView extends Button {
     private void updateButton() {
         if (isOn) {
             setBackgroundColor(Color.YELLOW);
+//            setBackgroundColor
             setText("Switch OFF");
         } else {
             setBackgroundColor(Color.BLACK);
