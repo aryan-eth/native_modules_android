@@ -60,8 +60,16 @@ public class MapsView extends Button {
     }
 
     // adds a button to the screen
-    //
+    // dynamic addition to the UI screen android
     private void addButton(){
+        Button new_button = new Button(getContext());
+        // we can only add in a layout or something
+        // how do we add it to no layout??
+        // we were changing the background, but what if we want to add components
+
+        // LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
+        // LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        // ll.addView(myButton, lp);
 
     }
 }
