@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -81,9 +82,19 @@ public class MapsView extends Button {
     @ReactMethod
     private void Layout(){
         LinearLayout layout = new LinearLayout(getContext());
+        LinearLayout.LayoutParams full_layout = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
+//        layout.setMinimumHeight(200);
+//        layout.setMinimumWidth();
+        TextView textView = new TextView(getContext());
+        LinearLayout.LayoutParams text_layout = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 40);
+        textView.setLayoutParams(text_layout);
+        textView.setText("Sample button");
         layout.addView(new TextView(getContext()));
     }
 
+
+    // method to show toast from the android code
     @ReactMethod
     private void toastShow(String message){
         Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
