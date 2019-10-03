@@ -6,6 +6,7 @@ import android.telecom.Call;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
@@ -15,8 +16,12 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.IllegalViewOperationException;
 import com.facebook.react.uimanager.PixelUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MapsModule extends ReactContextBaseJavaModule {
 
+    private static ReactApplicationContext reactApplicationContext;
     ReactApplicationContext rcontext;
     public MapsModule(@NonNull ReactApplicationContext reactContext) {
         super(reactContext);
@@ -85,4 +90,25 @@ public class MapsModule extends ReactContextBaseJavaModule {
 //        context.addLifecycleEventListener();
     }
 
+
+    // we add things to our map which eventually gets returned by this method
+    // this is called in the js file and used for promises, maybe??
+    @Nullable
+    @Override
+    public Map<String, Object> getConstants() {
+        final Map<String, Object> map = new HashMap<>();
+        map.put("","");
+        return map;
+    }
+
+    @ReactMethod
+    private void exampleMethod(){
+        final WritableMap map = Arguments.createMap();
+        map.putString("greetings", "Android command - coming from android");
+        emitDeviceEvent("Example event", map);
+    }
+
+    private static void  emitDeviceEvent(String event, @Nullable WritableMap map) {
+        reactApplicationContext.getJSModule();
+    }
 }
